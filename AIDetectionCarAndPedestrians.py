@@ -1,15 +1,19 @@
 import cv2
 
-#Our Image
-img_file="carimage.jpeg"
-#Out Video footage to check
+#Our Video footage to Detect cars
 Video=cv2.VideoCapture("CarsDetectVideo.mkv")
+#Our Video footage to Detect cars and pedestrians
+# Video=cv2.VideoCapture("Pedestrians.mkv")
 
-#Pre-trained Car-Classifier
-classifier_file="car_detector.xml"
+#Pre-trained Car-Classifier and Pedestrians-Classifier file
+car_tracker_file="car_detector.xml"
+Pedestrian_tracker_file="pedestrianDetector.xml"
 
-#Create a car Classifier
-car_tracker=cv2.CascadeClassifier(classifier_file)
+#Create a car Classifier and pedestrian Classifier
+car_tracker=cv2.CascadeClassifier(car_tracker_file)
+Pedestrian_tracker=cv2.CascadeClassifier(Pedestrian_tracker_file)
+
+
 
 # Used to run for ever until the car stops off.
 while True:
@@ -25,24 +29,31 @@ while True:
         break
     
 
-    #Car Tracker (Detect Cars of Multile Size or Scale)
+    #Detect Cars and Pedestrians (of Multile Size or Scale)
     cars=car_tracker.detectMultiScale(grayscaledframe)
+    Pedestrians=Pedestrian_tracker.detectMultiScale(grayscaledframe)
 
     #Draw Rectangles around Cars Detected
     for (x,y,w,h) in cars:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
+
+    #Draw Rectangles around Pedestrians Detected
+    for (x,y,w,h) in Pedestrians:
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,255),2)
     
-    print(cars)
-
-
     
-
-    #Display the images with Cars Spotted
-    cv2.imshow("AI car Detector", frame)
+    #Display the images with Cars and Predestrians Spotted
+    cv2.imshow("AI car and Pedestrians Detector", frame)
 
 
     #Dont Auto close window and waite for a key presse
-    cv2.waitKey(1)
+    key=cv2.waitKey(1)
+
+    #Press Q to Stop Running program
+    if key==81 or key==113:
+        break
+#Release Video Capture File Object
+Video.release()
 
 
 
