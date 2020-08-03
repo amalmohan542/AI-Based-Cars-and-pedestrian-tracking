@@ -20,9 +20,9 @@ car_tracker=cv2.CascadeClassifier(classifier_file)
 cars=car_tracker.detectMultiScale(blackandwhite)
 
 #Draw Rectangles around Cars Detected
-car1=cars[0]
-(x,y,w,h)=car1
-cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
+car1=cars[3]
+for (x,y,w,h) in cars:
+    cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
 
 
 
