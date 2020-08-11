@@ -9,4 +9,4 @@ The common Haar Cascade Features are shown below
 
 Inorder to Track and Detect Cars we use the below shown haar cascade to detect cars
 
-![](images/haar cascade to detect cars.png)
+![](https://github.com/amalmohan542/AI-Based-Cars-and-pedestrian-tracking/blob/master/images/haarcascadetodetectcars.png)
