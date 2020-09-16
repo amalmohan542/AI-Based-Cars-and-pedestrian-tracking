@@ -1,4 +1,5 @@
-# AI-Based-Cars-and-pedestrian-tracking
+# AI-Based-Cars-and-pedestrian-tracking  
+  
 The below picture represent the sample output obtained when we run the program with a video to analyze and detect Cars and Pedestrian.
 
 ![](images/PrototypeSample.png)
